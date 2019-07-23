@@ -1,0 +1,55 @@
+﻿<Window x:Class="SwissU.Views.Login"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SwissU.Views"
+        mc:Ignorable="d" 
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="Login" Height="500" Width="350" ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen" WindowStyle="None" >
+
+   
+    <Grid >
+        <Grid.Effect>
+            <DropShadowEffect BlurRadius="15" Direction="-45" RenderingBias="Quality" ShadowDepth="2"/>
+        </Grid.Effect>
+        
+        <Rectangle Height="280" VerticalAlignment="Top" >
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF1869B6"/>
+                    <GradientStop Color="#FF1869B6" Offset="0.5"/>
+                    <GradientStop Color="#FF196EA9" Offset="0.1"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        
+        <Image Source="/Images/SwissU.png" Height="100" VerticalAlignment="Top"/>
+        
+        <Rectangle Width="280" Height="240" Fill="White" VerticalAlignment="Bottom"
+                   Margin="0,100">
+        
+        </Rectangle>
+        
+        <Grid Width="280" Height="240" VerticalAlignment="Bottom" Margin="0,100">
+            <TextBlock Text="Login" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="5" Foreground="Gray" FontSize="18"/>
+            <StackPanel VerticalAlignment="Center" Margin="10">
+                <TextBox x:Name="txtUsername" materialDesign:HintAssist.Hint="Username" 
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                         Margin="0,10" FontFamily="Champagne &amp; Limousines"
+                         FontSize="18"/>
+                <PasswordBox x:Name="txtPassword" materialDesign:HintAssist.Hint="Password" 
+                             Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" 
+                             Margin="0,10" FontFamily="Champagne &amp; Limousines"
+                         FontSize="18"/>
+            </StackPanel>
+        </Grid>
+
+        <Button x:Name="btnLogin" VerticalAlignment="Bottom" Margin="0,85" Width="150" Content="LOGIN" Click="BtnLogin_Click"/>
+        <TextBlock x:Name="lblAuthError" Text="Authentication Error - Check username or password" 
+                   VerticalAlignment="Bottom" Padding="37" Foreground="Red" Visibility="Hidden"
+                   />
+
+    </Grid>
+</Window>

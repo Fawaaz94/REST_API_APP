@@ -1,0 +1,193 @@
+﻿<UserControl x:Class="SwissU.Views.FileUploadView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SwissU.Views"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="1100">
+
+    <Grid Background="White">
+
+        <Grid.ColumnDefinitions>
+            <!--Col 0-->
+            <ColumnDefinition Width="10"/>
+            <!--Col 1-->
+            <ColumnDefinition Width="Auto"/>
+            <!--Col 2-->
+            <ColumnDefinition Width="Auto"/>
+            <!--Col 3-->
+            <ColumnDefinition Width="Auto"/>
+            <!--Col 4-->
+            <ColumnDefinition Width="*"/>
+            <!--Col 5-->
+            <ColumnDefinition Width="10"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <!--Row 0-->
+            <RowDefinition Height="10"/>
+            <!--Row 1-->
+            <RowDefinition Height="Auto"/>
+            <!--Row 2-->
+            <RowDefinition Height="40"/>
+            <!--Row 3-->
+            <RowDefinition Height="Auto"/>
+            <!--Row 4-->
+            <RowDefinition Height="10"/>
+
+        </Grid.RowDefinitions>
+
+
+        <!-- Bulk Rectange -->
+        <Rectangle Fill="White" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2"
+                   VerticalAlignment="Top" Width="500" Height="260" Margin="50 20 20 0">
+            <Rectangle.Effect>
+                <DropShadowEffect Color="#FFBBBBBB" Direction="0" BlurRadius="15"
+                                RenderingBias="Quality" ShadowDepth="0"/>
+            </Rectangle.Effect>
+        </Rectangle>
+
+        <!--BULK LABEL -->
+        <Rectangle Fill="White" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2"
+                   VerticalAlignment="Top" HorizontalAlignment="Center" 
+                   Width="150" Height="60" Margin="20 0 20 0" >
+            <Rectangle.Effect>
+                <DropShadowEffect Color="#FFBBBBBB" Direction="0" BlurRadius="15"
+                                RenderingBias="Quality" ShadowDepth="0"/>
+            </Rectangle.Effect>
+        </Rectangle>
+
+        <Grid Background="White" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2"
+                   VerticalAlignment="Top" HorizontalAlignment="Center" 
+                   Width="150" Height="60" Margin="20 0 20 0" >
+            <TextBlock Text="BULK" FontSize="40" 
+                       VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Trebuchet MS"/>
+        </Grid>
+        <!-- END OF LABEL -->
+
+        <Grid Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2"
+                   VerticalAlignment="Top" Width="500" Height="260" 
+              Margin="50 20 20 0" >
+
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+
+                <TextBox x:Name="txtBulk" materialDesign:HintAssist.Hint="Upload Excel Sheet" 
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                         Margin="10" FontFamily="Champagne &amp; Limousines"
+                         FontSize="18" Width="450"/>
+
+                <StackPanel Orientation="Horizontal" >
+                    <Button x:Name="btnUploadExcel" Content="Upload" 
+                             Margin="75, 20, 40, 0" Width="150"
+                    Click="BtnUploadExcel_Click" />
+
+                    <Button x:Name="btnExecuteExcelUpload" Content="Execute" Width="150" 
+                            Margin="10,30,10,10" Click="BtnExecuteExcelUploadAsync_Click"/>
+                </StackPanel>
+
+            </StackPanel>
+        </Grid>
+
+        <!-- Single Rectange -->
+        <Rectangle Fill="White" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2"
+                   VerticalAlignment="Top"  Width="500" Height="260" 
+                    Margin="50 20 20 0">
+            <Rectangle.Effect>
+                <DropShadowEffect Color="#FFBBBBBB" Direction="0" BlurRadius="15"
+                                RenderingBias="Quality" ShadowDepth="0"/>
+            </Rectangle.Effect>
+        </Rectangle>
+
+        <!-- SINGLE LABEL -->
+        <Rectangle Fill="White" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Grid.RowSpan="2"
+                   VerticalAlignment="Top" HorizontalAlignment="Center" 
+                   Width="150" Height="60" Margin="0 20 0 0">
+            <Rectangle.Effect>
+                <DropShadowEffect Color="#FFBBBBBB" Direction="0" BlurRadius="15"
+                                RenderingBias="Quality" ShadowDepth="0"/>
+            </Rectangle.Effect>
+        </Rectangle>
+
+        <Grid Background="White" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Grid.RowSpan="2"
+                   VerticalAlignment="Top" HorizontalAlignment="Center" 
+                   Width="160" Height="60" Margin="0 20 0 0" >
+            <TextBlock Text="SINGLE" FontSize="40" 
+                       VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Trebuchet MS"/>
+        </Grid>
+        <!-- END OF SINGLE LABEL -->
+
+        <Grid Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2"
+                   VerticalAlignment="Top" Width="500" Height="260" 
+               Margin="50 20 20 0">
+
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" 
+                        VerticalAlignment="Center">
+
+
+                <TextBox x:Name="txtSingleFile" FontSize="18" Width="450" 
+                         Margin="0 25 0 0"
+                    materialDesign:HintAssist.Hint="Upload Single File" 
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                    FontFamily="Champagne &amp; Limousines"/>
+
+
+
+                <TextBox x:Name="txtFileLocation" materialDesign:HintAssist.Hint="Location"  
+                             Margin="0 25 0 0"
+                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                             FontFamily="Champagne &amp; Limousines"
+                             FontSize="18" Width="250"
+                             HorizontalAlignment="Left"/>
+
+                <StackPanel Orientation="Horizontal" Margin="0 10 0 0" >
+                    <Button x:Name="btnUploadFile" Content="Upload" 
+                             Margin="50, 20, 40, 0" Width="150"
+                            Click="BtnUploadFile_Click"/>
+
+                    <Button x:Name="btnExecuteSingleUpload" Content="Execute" Width="150" 
+                                Margin="10,30,10,10" Click="BtnExecuteSingleUpload_Click"/>
+                </StackPanel>
+
+            </StackPanel>
+
+        </Grid>
+
+        <TextBox x:Name="txtResultsBox" Grid.Column="3" Grid.Row="1" Grid.ColumnSpan="2" 
+                 Background="#FFD6D6D6" Height="260" VerticalContentAlignment="Top" 
+                 TextWrapping="Wrap" Margin="20 20 0 0"
+                 IsUndoEnabled="False" IsReadOnly="True" TextAlignment="Center" HorizontalAlignment="Left" Width="500"
+                 />
+
+
+
+        <!--Output from the execution-->
+        <StackPanel Grid.Column="4" Grid.Row="3" Grid.RowSpan="1"
+                    Margin="0 10 0 0">
+
+            <StackPanel x:Name="successPanel" Orientation="Horizontal">
+                <TextBlock  Text="Success Count:" Foreground="Green"
+                       Margin="12,12,15,12" VerticalAlignment="Center" 
+                       FontSize="20"/>
+                <TextBlock x:Name="lblSuccessCount" Text="Number" 
+                           VerticalAlignment="Center" FontSize="20"
+                           Foreground="Green"/>
+            </StackPanel>
+
+            <StackPanel x:Name="errorPanel" Orientation="Horizontal">
+                <TextBlock Text="Error Count:" Foreground="Red"
+                       Margin="12" VerticalAlignment="Center" 
+                       FontSize="20"/>
+                <TextBlock x:Name="lblErrorCount" Text="Number" VerticalAlignment="Center" FontSize="20"
+                           Foreground="Red"/>
+            </StackPanel>
+
+            <Button x:Name="btnRetry" Content="Retry" HorizontalAlignment="Left"
+                    Width="250" Margin="150 30 0 0" Click="BtnRetry_Click_1"/>
+
+        </StackPanel>
+
+
+    </Grid>
+</UserControl>
