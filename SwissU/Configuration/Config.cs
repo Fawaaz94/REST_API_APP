@@ -9,13 +9,14 @@ namespace SwissU.Configuration
 {
     static class Config
     {
-        // Gets the Endpoint from a Config File
+        // Gets the username of the current user logged into this local PC
         static string userName = Environment.UserName;
 
         public static string endpoint = getEndpoint();
-        public static string ticket = Authentication();
 
-
+        /// <summary>
+        /// This will return the endpoint from the textfile on the local computer
+        /// </summary>
         public static string getEndpoint()
         {
             string[] lines = File.ReadAllLines(getConfig());
@@ -27,19 +28,14 @@ namespace SwissU.Configuration
             return path;
         }
 
+        /// <summary>
+        /// This will 
+        /// </summary>
         public static string getConfig()
         {
             string configPath = string.Format(@"C:\Users\{0}\AppData\Configuration.txt", userName);
 
             return configPath;
-        }
-
-        public static string Authentication()
-        {
-            string stringTicket = string.Empty;
-
-
-            return stringTicket;
         }
 
     }

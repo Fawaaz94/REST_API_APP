@@ -25,7 +25,8 @@ namespace SwissU.Views
             {
                 // Calls the static Authentication method and passes the username and password textboxes 
                 // The endpoint comes from the Config class that pulls the data from a text file on your local computer
-                LoginViewModel.Authentication(txtUsername.Text, txtPassword.Password, Config.endpoint);
+                LoginViewModel.Authentication("fdassie", "Data2019!", Config.endpoint);
+                //LoginViewModel.Authentication(txtUsername.Text, txtPassword.Password, Config.endpoint);
 
                 // Once logged in it calls the MainWindow window 
                 // And passes the ticket generated from the Authentication method

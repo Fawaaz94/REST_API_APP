@@ -9,8 +9,9 @@ namespace SwissU.Models
     class RowObject
     {
         public string EmpID { get; set; }
-        public string Name { get; set; }
-        public string WSFolder { get; set; }
-        public string Document { get; set; }
+        public string EMPName { get; set; }
+        public string FileName { get; set; }
+        public string FileLocation { get; set; }
+        
     }
 }

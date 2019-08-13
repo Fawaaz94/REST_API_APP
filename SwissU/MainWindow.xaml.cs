@@ -27,16 +27,12 @@ namespace SwissU
         {
             InitializeComponent();
             _ticket = ticket;
+            DataContext = new fileUploadViewModel(_ticket);
         }
 
         private void BtnFileUpload_Click_1(object sender, RoutedEventArgs e)
         {
             DataContext = new fileUploadViewModel(_ticket);
-        }
-
-        private void BtnBulkMove_Click(object sender, RoutedEventArgs e)
-        {
-            DataContext = new bulkMoveViewModel();
         }
 
         private void BtnCategoriesUpdate_Click(object sender, RoutedEventArgs e)

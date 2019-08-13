@@ -25,7 +25,7 @@ namespace SwissU.Views
             // Hiding the result labels and Retry button before execution
             successPanel.Visibility = Visibility.Hidden;
             errorPanel.Visibility = Visibility.Hidden;
-            btnRetry.Visibility = Visibility.Hidden;
+            
         }// EOC
 
 
@@ -45,8 +45,11 @@ namespace SwissU.Views
         {
             this.Dispatcher.Invoke( () => 
             {
-                List<int> resultsCounter = viewModel.BulkUpload(txtBulk.Text, resultsList);
+                txtResultsBox.Text = String.Empty;
+                lblSuccessCount.Text = String.Empty;
+                lblErrorCount.Text = String.Empty;
 
+                List<int> resultsCounter = viewModel.BulkUpload(txtBulk.Text, resultsList);
 
                 foreach (var item in resultsList)
                 {
@@ -55,7 +58,7 @@ namespace SwissU.Views
 
                 successPanel.Visibility = Visibility.Visible;
                 errorPanel.Visibility = Visibility.Visible;
-                btnRetry.Visibility = Visibility.Visible;
+                
 
                 lblSuccessCount.Text = resultsCounter.ElementAt(0).ToString();
                 lblErrorCount.Text = resultsCounter.ElementAt(1).ToString();
@@ -68,8 +71,8 @@ namespace SwissU.Views
         }
 
 
-        // BULK EXECUTE FILE UPLOAD
         private void BtnExecuteExcelUploadAsync_Click(object sender, RoutedEventArgs e)
+        // BULK EXECUTE FILE UPLOAD
         {
             txtResultsBox.Clear();
 
@@ -79,6 +82,7 @@ namespace SwissU.Views
         }// EOM
 
 
+        #region Single File OPS
         // SINGLE FILE UPLOAD
         private void BtnUploadFile_Click(object sender, RoutedEventArgs e)
         {
@@ -86,7 +90,7 @@ namespace SwissU.Views
 
             if (openFile.ShowDialog() == true)
             {
-                txtSingleFile.Text = openFile.FileName;
+                txtSingleFileUpload.Text = openFile.FileName;
             }
         }// EOM
 
@@ -94,17 +98,43 @@ namespace SwissU.Views
         // SINGLE FILE EXECUTE
         private void BtnExecuteSingleUpload_Click(object sender, RoutedEventArgs e)
         {
-            txtResultsBox.Text = viewModel.SingleUpload(txtFileLocation.Text, txtSingleFile.Text);
+            try
+            {
+                if(viewModel.SingleUpload(txtSingleFileLocation.Text, txtSingleFileUpload.Text) == "OK")
+                {
+                    txtResultsBox.Text = "Completed";
+                }
+                else
+                {
+                    txtResultsBox.Text = "There was a error.";
+                }
+            }
+            catch (Exception ex)
+            {
+                txtResultsBox.Text = $"{ex.Message}";
+            }
 
-            txtFileLocation.Text = string.Empty;
-            txtSingleFile.Text = string.Empty;
-        }
+            // Clears the textBox
+            txtSingleFileLocation.Text = string.Empty;
+            txtSingleFileUpload.Text = string.Empty;
 
-        private void BtnRetry_Click_1(object sender, RoutedEventArgs e)
+        }// EOM
+
+        #endregion
+
+        //Upload Bulk WS EXCEL
+        private void BtnUploadWSExcel_Click(object sender, RoutedEventArgs e)
         {
-            txtResultsBox.Clear();
-            Thread thread = new Thread(new ThreadStart(test));
-            thread.Start();
-        }
+            OpenFileDialog openFile = new OpenFileDialog();
+
+            if (openFile.ShowDialog() == true)
+            {
+                txtBulkWSExcel.Text = openFile.FileName;
+            }
+        }// EOM
+
+
+        // Execute Bulk WS Excel
+
     }
 }

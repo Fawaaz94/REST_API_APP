@@ -16,7 +16,6 @@ namespace SwissU.ViewModels
     {
         // Creating a RESTSharp Client
         public static RestClient Rclient = new RestClient();
-        GlobalConfig gConfig = new GlobalConfig();
 
         public string _ticket { get; set; }
 
@@ -24,19 +23,22 @@ namespace SwissU.ViewModels
 
         public int ErrorCount { get; set; } = 0;
 
+
+        //Empty CTRO
         public fileUploadViewModel()
         {
            
         }// EOC
 
 
+        //Parameter CTOR
         public fileUploadViewModel(string ticket)
         {
             _ticket = ticket;
         }// EOC
 
 
-        // BULK UPLOAD
+        #region BULK UPLOAD - For files from local computer 
         public List<int> BulkUpload(string excelFile, List<string> resultList)
         {
 
@@ -51,11 +53,12 @@ namespace SwissU.ViewModels
             {
                 try
                 {
-                    resultList.Add(UploadFile(search(LoginViewModel.ticket, Config.endpoint, item.EmpID), LoginViewModel.ticket, Config.endpoint, item.Document));
+                    resultList.Add(UploadFile(search(LoginViewModel.ticket, Config.endpoint, item.EmpID), LoginViewModel.ticket, Config.endpoint, item.FileLocation));
 
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine("Exception: {0}", ex.ToString());
                 }
             }
 
@@ -72,20 +75,24 @@ namespace SwissU.ViewModels
 
             return resultsCounter;
         }// EOM
+        
+        #endregion
 
 
-        // SINGLE FILE UPLOAD
+        #region SINGLE FILE UPLOAD
         public string SingleUpload(string searchValue, string docPath)
         {
             string result = string.Empty;
 
-            UploadFile(search(LoginViewModel.ticket, Config.endpoint, searchValue), LoginViewModel.ticket, Config.endpoint, docPath);
+            result = UploadFile(search(LoginViewModel.ticket, Config.endpoint, searchValue), LoginViewModel.ticket, Config.endpoint, docPath);
 
             return result;
         }// EOM
+        
+     
 
 
-        #region UPLOAD
+        // UPLOAD - files from local PC
         private string UploadFile(int id, string ticket, string endPoint, string docPath)
         {
             string CompleteOutput = string.Empty;
@@ -135,7 +142,7 @@ namespace SwissU.ViewModels
         #endregion
 
 
-        #region SEARCH
+        #region SEARCH - For files from local computer
         // This search methiod will find the folder specified and return its ID
         public static int search(string ticket, string endPoint, string Searchvalue)
         {
@@ -161,7 +168,26 @@ namespace SwissU.ViewModels
 
             return id;
         }// EOM
+
         #endregion
+
+
+        #region Create Bulk Business Workspaces
+        public void createBusinessWorkspace(string templateID, string parentID, string excelFile)
+        {
+            // This method will read the list of Business WS's to create
+            var collection = ExcelReaderBulkWS.getExcelFile(excelFile);
+
+            foreach (var item in collection)
+            {
+                // This is where we loop to create bulk workspaces
+
+                
+            }
+        }// EOM
+
+        #endregion
+
 
     }// EOCLASS
 }

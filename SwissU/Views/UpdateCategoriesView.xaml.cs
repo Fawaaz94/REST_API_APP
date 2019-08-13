@@ -28,8 +28,7 @@ namespace SwissU.Views
         public UpdateCategoriesView()
         {
             InitializeComponent();
-            lblCount.Visibility = Visibility.Hidden;
-            lblCountLabel.Visibility = Visibility.Hidden;
+            
         }// EOC
 
 
@@ -37,10 +36,9 @@ namespace SwissU.Views
         {
             string attributeIDString = string.Format("Attr_{0} : {1}", txtSearchValue.Text, cbxAttributeValue.Text);
             updateCategoriesViewModel viewModel = new updateCategoriesViewModel();
-            viewModel.ExecuteUpdate(LoginViewModel.ticket, attributeIDString, txtNewValue.Text, txtResult, txtSearchValue.Text, Config.endpoint, lblCount);
+            viewModel.ExecuteUpdate(LoginViewModel.ticket, attributeIDString, txtNewValue.Text, txtSearchValue.Text, Config.endpoint);
 
-            lblCount.Visibility = Visibility.Visible;
-            lblCountLabel.Visibility = Visibility.Visible;
+            
 
         }// EOM
 

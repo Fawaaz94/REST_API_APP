@@ -99,10 +99,14 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Configuration\Config.cs" />
+    <Compile Include="Extention Code\AuditLog.cs" />
+    <Compile Include="Extention Code\ErrorLog.cs" />
+    <Compile Include="Extention Code\ExcelReaderBulkWS.cs" />
     <Compile Include="Extention Code\ExcelReader.cs" />
     <Compile Include="Models\Poco.cs" />
     <Compile Include="Models\PocoGetCategoriesResult.cs" />
     <Compile Include="Models\RowObject.cs" />
+    <Compile Include="Models\RowObjectBulkWS.cs" />
     <Compile Include="ViewModels\bulkMoveViewModel.cs" />
     <Compile Include="ViewModels\fileUploadViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />

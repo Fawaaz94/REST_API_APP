@@ -18,7 +18,7 @@ namespace SwissU.ViewModels
         public static RestClient Rclient = new RestClient();
 
 
-        public void ExecuteUpdate(string ticket, string attributeID, string changeValue, TextBox txtResponse, string catAttrID, string endpoint, TextBlock countLabel)
+        public void ExecuteUpdate(string ticket, string attributeID, string changeValue, string catAttrID, string endpoint)
         {
             int id = 0;
 
@@ -34,7 +34,7 @@ namespace SwissU.ViewModels
 
             Poco item = JsonConvert.DeserializeObject<Poco>(response);
 
-            countLabel.Text = (item.Results.Count).ToString();
+            //countLabel.Text = (item.Results.Count).ToString();
 
             int i = 0;
 
@@ -44,7 +44,7 @@ namespace SwissU.ViewModels
                 id = obj.Data.properties.Id;
 
                 // Inserting the id value to be used for changing the category attribute
-                InsertAttributeValues(ticket, id, changeValue, txtResponse, catAttrID, ++i, endpoint);
+                InsertAttributeValues(ticket, id, changeValue, catAttrID, ++i, endpoint);
             }
 
         }// EOM
@@ -53,7 +53,7 @@ namespace SwissU.ViewModels
         /// <summary>
         /// This method will insert the values you want into a particular categories attribute
         /// </summary>
-        public void InsertAttributeValues(string ticket, int id, string changeValue, TextBox txtResponse, string attributeID, int i, string endpoint)
+        public void InsertAttributeValues(string ticket, int id, string changeValue, string attributeID, int i, string endpoint)
         {
             // Setting the endpoint for this method
             Rclient.BaseUrl = new Uri(string.Format("{0}/api/v2/nodes/{1}/categories/{2}", endpoint, id, splitAttributeID(attributeID)));
@@ -71,9 +71,9 @@ namespace SwissU.ViewModels
             var response = Rclient.Execute(request);
             var statusCode = response.StatusCode;
 
-            txtResponse.Text += string.Format("{0}: ", i);
-            txtResponse.Text += statusCode;
-            txtResponse.Text += System.Environment.NewLine;
+            //txtResponse.Text += string.Format("{0}: ", i);
+            //txtResponse.Text += statusCode;
+            //txtResponse.Text += System.Environment.NewLine;
 
         }// EOM
 

@@ -72,22 +72,10 @@
             </StackPanel>
         </Grid>
 
-        <!-- Result TextBox -->
-        <TextBox x:Name="txtResult" Grid.Row="4" Grid.RowSpan="2" Grid.Column="1"
-                 Grid.ColumnSpan="3" Background="Beige" mah:TextBoxHelper.WatermarkAlignment="Justify" mah:ScrollViewerHelper.IsHorizontalScrollWheelEnabled="True" TextWrapping="Wrap" IsReadOnly="True"/>
-        <!-- EOF Results TextBox-->
-
-        <!-- Results -->
-        <StackPanel Orientation="Horizontal" Grid.Column="4" Grid.Row="4" 
-                    Grid.ColumnSpan="2">
-            <TextBlock x:Name="lblCountLabel" Text="Count:" Margin="20" FontSize="20"
-                   VerticalAlignment="Center"
-                      Foreground="Green" HorizontalAlignment="Center"/>
-            <TextBlock x:Name="lblCount"  Text="Number" FontSize="20"
-                      Foreground="Green" VerticalAlignment="Center" 
-                       HorizontalAlignment="Center"/>
-        </StackPanel>
-        <!-- EOF Results -->
+        
+        
+        
+        
 
     </Grid>
 </UserControl>

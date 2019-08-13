@@ -7,11 +7,11 @@ using Excel = Microsoft.Office.Interop.Excel;       //microsoft Excel 14 object 
 
 namespace SwissU.Extention_Code
 {
-    class ExcelReader
+    class ExcelReaderBulkWS
     {
-        public static List<RowObject> getExcelFile(string ExcelFileLocation)
+        public static List<RowObjectBulkWS> getExcelFile(string ExcelFileLocation)
         {
-            List<RowObject> items = new List<RowObject>();
+            List<RowObjectBulkWS> items = new List<RowObjectBulkWS>();
 
             //Create COM Objects. Create a COM object for everything that is referenced
             Excel.Application xlApp = new Excel.Application();
@@ -33,12 +33,10 @@ namespace SwissU.Extention_Code
                     {
                         // Adds items to the List 
                         items.Add(
-                            new RowObject
+                            new RowObjectBulkWS
                             {
-                                EmpID= xlRange.Cells[i, j].Value2.ToString(),
-                                EMPName  = xlRange.Cells[i, j + 1].Value2.ToString(),
-                                FileName  = xlRange.Cells[i, j + 2].Value2.ToString(),
-                                FileLocation  = xlRange.Cells[i, j + 3].Value2.ToString()
+                                CompanyID = xlRange.Cells[i, j + 1].Value2.ToString(),
+                                CompanyName = xlRange.Cells[i, j + 2].Value2.ToString(),
                             }
                         );
 
